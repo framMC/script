@@ -14,6 +14,11 @@ Notification:Notify(
 )
 wait(1)
 Notification:Notify(
-    {Title = "VernonX", Description = "กำลังเปิดใช้การฟังก์ชั่นในสคริป"},
-    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 6, Type = "option"}
+    {Title = "VernonX", Description = "กำลังปรับทรัพยากรใน Server"},
+    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 6, Type = "default"}
+)
+wait(1)
+Notification:Notify(
+    {Title = "VernonX", Description = "ตัวนี้จะเป็นตัวทดลองการใช้งานเท้านั้นยังเป็น Demo อยู่"},
+    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 6, Type = "default"}
 )
