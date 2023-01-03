@@ -1,32 +1,9 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ArceusXHub/atomic-hub/main/atomic-hub"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ArceusXHub/atomic-hub/main/atomic-hub", true))()
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/framMC/script/main/hacking/Godmode.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/framMC/script/main/hacking/Godmode.lua", true))()
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/framMC/script/main/GamePlay/WelcomeUI.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/framMC/script/main/GamePlay/FpsBooster.lua", true))()
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/framMC/script/main/GamePlay/AntiLag.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/framMC/script/main/GamePlay/WelcomeUI.lua", true))()
 
-local NotificationHolder = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Module.Lua"))()
-local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Client.Lua"))()
-
-Notification:Notify(
-    {Title = "VernonX", Description = "Welcome to VernonX. Thank you for using our Script."},
-    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 5, Type = "image"},
-    {Image = "https://www.roblox.com/library/12017847837/logo-VernonX", ImageColor = Color3.fromRGB(255, 84, 84), Callback = function(State) print(tostring(State)) end}
-)
-wait(1)
-Notification:Notify(
-    {Title = "VernonX", Description = "กำหลังโหลดสคริปกรุณารอสักครู่"},
-    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 6, Type = "image"},
-    {Image = "https://www.roblox.com/library/12017847837/logo-VernonX", ImageColor = Color3.fromRGB(255, 84, 84)}
-)
-wait(1)
-Notification:Notify(
-    {Title = "VernonX", Description = "กำลังปรับทรัพยากรใน Server"},
-    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 6, Type = "default"}
-)
-wait(1)
-Notification:Notify(
-    {Title = "VernonX", Description = "ตัวนี้จะเป็นตัวทดลองการใช้งานเท้านั้นยังเป็น Demo อยู่"},
-    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 6, Type = "default"}
-)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/framMC/script/main/GamePlay/AntiLag.lua", true))()
