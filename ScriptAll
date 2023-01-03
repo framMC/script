@@ -1,3 +1,7 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/ArceusXHub/atomic-hub/main/atomic-hub"))()
 
 loadstring(game:HttpGet("hacking/Godmode"))()
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/framMC/script/main/GamePlay/FpsBooster"))()
+
+
