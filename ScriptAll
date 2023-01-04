@@ -4,4 +4,4 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/ArceusXHub/atomic-hub
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/framMC/script/main/GamePlay/AntiLag.lua", true))()
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/framMC/script/main/GamePlay/Kick.lua", true))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/framMC/script/main/GamePlay/block.lua", true))()
