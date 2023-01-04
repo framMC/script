@@ -27,7 +27,7 @@ Notification:Notify(
 wait(1)
 Notification:Notify(
     {Title = "VernonX", Description = "เเนะนำหากมือถือหรือคอมพิวเตอร์ของคุณช้าลงหรือค้างให้เเนะนำกดใช้งานตัวนี้เพื่อให้เครื่องของคุณลื่นขึ้น !!เเนะนำ"},
-    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 16, Type = "option"}
+    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 30, Type = "option"}
 )
 wait(1)
 Notification:Notify(
