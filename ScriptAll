@@ -6,4 +6,4 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/framMC/script/main/ha
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/framMC/script/main/GamePlay/AntiLag.lua", true))()
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/framMC/script/main/GamePlay/FpsBooster.lua", true))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/framMC/script/main/GamePlay/FpsBooster.lua"))()
