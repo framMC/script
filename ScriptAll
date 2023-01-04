@@ -5,3 +5,5 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/ArceusXHub/atomic-hub
 loadstring(game:HttpGet("https://raw.githubusercontent.com/framMC/script/main/hacking/Godmode.lua", true))()
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/framMC/script/main/GamePlay/AntiLag.lua", true))()
+
+game.Players.LocalPlayer:Kick("วันหยุดปีใหม่ สคริปต์จะเปิดในวันที่ 5 มกราคม")
