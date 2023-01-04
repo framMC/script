@@ -1,9 +1,5 @@
 local crumbleCount = math.floor(#game.Workspace.Map.Destroyable:GetChildren() * 0.2)
- local chosenBlock = game.Workspace.Map.Destroyable:GetChildren()[math.random(1, #game.Workspace.Map.Destroyable:GetChildren())]
-chosenBlock.Color = Color3.fromRGB(255,0,0)
-chosenBlock.Parent = game.Workspace.Map.Destroyed
-game:GetService([[Debris]]):AddItem(chosenBlock, 0.5)
-		for crumble = 0, crumbleCount, 1 do
+	for crumble = 0, crumbleCount, 1 do
 			local chosenBlock = game.Workspace.Map.Destroyable:GetChildren()[math.random(1, #game.Workspace.Map.Destroyable:GetChildren())]
 			chosenBlock.Color = Color3.fromRGB(255,0,0)
 			chosenBlock.Parent = game.Workspace.Map.Destroyed
