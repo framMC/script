@@ -5,5 +5,3 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/ArceusXHub/atomic-hub
 loadstring(game:HttpGet("https://raw.githubusercontent.com/framMC/script/main/hacking/Godmode.lua", true))()
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/framMC/script/main/GamePlay/AntiLag.lua", true))()
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/framMC/script/main/GamePlay/FpsBooster.lua"))()
