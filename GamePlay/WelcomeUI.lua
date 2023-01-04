@@ -31,6 +31,12 @@ Notification:Notify(
 )
 wait(1)
 Notification:Notify(
+    {Title = "VernonX", Description = "เว็บไซต์ของเรา vernonx.ml"},
+    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 10, Type = "image"},
+    {Image = "http://www.roblox.com/asset/?id=6023426923", ImageColor = Color3.fromRGB(255, 84, 84)}
+)
+wait(1)
+Notification:Notify(
     {Title = "VernonX", Description = "ขอบคุณสำหรับการสนับสนุนจากเรา"},
-    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 8, Type = "default"}
+    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 10, Type = "default"}
 )
