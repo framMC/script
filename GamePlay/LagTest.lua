@@ -1,20 +1,4 @@
---[[
-   __                __                 
-  /  |              /  |                
- _$$ |_     ______  $$ |____   ________ 
-/ $$   |   /      \ $$      \ /        |
-$$$$$$/    $$$$$$  |$$$$$$$  |$$$$$$$$/ 
-  $$ | __  /    $$ |$$ |  $$ |  /  $$/  
-  $$ |/  |/$$$$$$$ |$$ |__$$ | /$$$$/__ 
-  $$  $$/ $$    $$ |$$    $$/ /$$      |
-   $$$$/   $$$$$$$/ $$$$$$$/  $$$$$$$$/ 
-                                        
-                                        
-                                        
-
-No Lag Script [Includes Anti-AFK] by banz#1780 | https://discord.gg/HtQHxwb5vm
-https://www.roblox.com/games/6356806222/Lag-Test-2021
-]]--
+-- No Lag Script [Includes Anti-AFK] by VernonX
 print("Started")
 wait()
 local tabz = game:GetService("VirtualUser")
