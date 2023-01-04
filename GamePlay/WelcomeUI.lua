@@ -3,7 +3,7 @@ local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/
 
 Notification:Notify(
     {Title = "VernonX", Description = "Welcome to VernonX. Thank you for using our Script."},
-    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 5, Type = "image"},
+    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 6, Type = "image"},
     {Image = "http://www.roblox.com/asset/?id=12017847837", ImageColor = Color3.fromRGB(255, 84, 84), Callback = function(State) print(tostring(State)) end}
 )
 wait(1)
@@ -27,12 +27,12 @@ Notification:Notify(
 wait(1)
 Notification:Notify(
     {Title = "VernonX", Description = "เเนะนำหากมือถือหรือคอมพิวเตอร์ของคุณช้าลงหรือค้างให้เเนะนำกดใช้งานตัวนี้เพื่อให้เครื่องของคุณลื่นขึ้น !!เเนะนำ"},
-    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 30, Type = "option"}
+    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 50, Type = "option"}
 )
 wait(1)
 Notification:Notify(
-    {Title = "VernonX", Description = "เว็บไซต์ของเรา vernonx.ml"},
-    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 10, Type = "image"},
+    {Title = "VernonX", Description = "Creator By VernonStudio"},
+    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 15, Type = "image"},
     {Image = "http://www.roblox.com/asset/?id=6023426923", ImageColor = Color3.fromRGB(255, 84, 84)}
 )
 wait(1)
