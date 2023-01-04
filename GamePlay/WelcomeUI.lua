@@ -9,18 +9,18 @@ Notification:Notify(
 wait(1)
 Notification:Notify(
     {Title = "VernonX", Description = "กำหลังโหลดสคริปกรุณารอสักครู่"},
-    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 8, Type = "image"},
+    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 6, Type = "image"},
     {Image = "https://www.roblox.com/library/12017847837/logo-VernonX", ImageColor = Color3.fromRGB(255, 84, 84)}
 )
 wait(1)
 Notification:Notify(
     {Title = "VernonX", Description = "กำลังปรับทรัพยากรใน Server"},
-    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 8, Type = "default"}
+    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 6, Type = "default"}
 )
 wait(1)
 Notification:Notify(
     {Title = "VernonX", Description = "ตัวนี้จะเป็นตัวทดลองการใช้งานเท้านั้นยังเป็น Beta อยู่"},
-    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 8, Type = "default"}
+    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 6, Type = "default"}
 )
 wait(1)
 Notification:Notify(
