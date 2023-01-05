@@ -37,6 +37,6 @@ Notification:Notify(
 )
 wait(1)
 Notification:Notify(
-    {Title = "VernonX", Description = "ขอบคุณสำหรับการสนับสนุนจากเร แบงค์กะไอ้พีเกเก่"},
+    {Title = "VernonX", Description = "ขอบคุณสำหรับการสนับสนุนจากทางเรา"},
     {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 20, Type = "default"}
 )
