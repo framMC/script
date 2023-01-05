@@ -31,12 +31,12 @@ Notification:Notify(
 )
 wait(1)
 Notification:Notify(
-    {Title = "VernonX", Description = "Creator By VernonStudio"},
+    {Title = "VernonX", Description = "สร้างโดย Team VernonStudio"},
     {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 10, Type = "image"},
     {Image = "http://www.roblox.com/asset/?id=12017847837", ImageColor = Color3.fromRGB(255, 84, 84)}
 )
 wait(1)
 Notification:Notify(
-    {Title = "VernonX", Description = "ขอบคุณสำหรับการสนับสนุนจากเรา"},
-    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 15, Type = "default"}
+    {Title = "VernonX", Description = "ขอบคุณสำหรับการสนับสนุนจากเรา  แบงค์กะไอ้พีเก"},
+    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 20, Type = "default"}
 )
