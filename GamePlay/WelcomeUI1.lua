@@ -1,8 +1,9 @@
 local function callback(Text)
-	if Text == "ไม่จำเป็น" then
+	if Text == "Agree" then
 		
-	elseif Text == ("ลดพื้นผิวกันเเหลก") then
-	   loadstring(game:HttpGet("https://raw.githubusercontent.com/CasperFlyModz/discord.gg-rips/main/FPSBooster.lua"))()
+	elseif Text == ("Decline") then
+		game:GetService("Players").LocalPlayer:Kick("Declined warning") 
+
 	end
 	end
 
@@ -10,11 +11,11 @@ local NotificationBindable = Instance.new("BindableFunction")
 NotificationBindable.OnInvoke = callback
 --
 game.StarterGui:SetCore("SendNotification",  {
-	Title = "Script AntiLag";
-	Text = "ตัวลดพื้นผิวเเละลดเเหลกในการเล่นเกม เเนะนำให้ใช้งาน V2";
+	Title = "WARNING";
+	Text = "This game contains flashing lights and loud audios. Not suitable for anyone with photosensitive epilepsy.";
 	Icon = "rbxassetid://240664703";
 	Duration = 100;
-	Button1 = "ลดพื้นผิวกันเเหลก";
-	Button2 = "ไม่จำเป็น";
+	Button1 = "Agree";
+	Button2 = "Decline";
 	Callback = NotificationBindable;
 })
