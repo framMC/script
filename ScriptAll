@@ -14,4 +14,4 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/framMC/script/main/Ga
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/framMC/script/main/GamePlay/AntiLagV1.lua", true))()
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/framMC/script/main/GamePlay/WelcomeUI1.lua", true))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/framMC/script/main/GamePlay/Welcomeui1.lua", true))()
