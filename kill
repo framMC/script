@@ -1,54 +1,76 @@
-local Player = game.Players.LocalPlayer
-local ScreenGui = Instance.new("ScreenGui")
-ScreenGui.Name = "AttackMenu"
-ScreenGui.Parent = Player:WaitForChild("PlayerGui")
+local player = game.Players.LocalPlayer
+local screenGui = Instance.new("ScreenGui")
+local button = Instance.new("TextButton")
+local frame = Instance.new("Frame")
+local closeButton = Instance.new("TextButton")
 
-local MainFrame = Instance.new("Frame")
-MainFrame.Size = UDim2.new(0.5, 0, 0.5, 0)
-MainFrame.Position = UDim2.new(0.25, 0, 0.25, 0)
-MainFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-MainFrame.Parent = ScreenGui
+-- ตั้งค่า ScreenGui
+screenGui.Parent = player:WaitForChild("PlayerGui")
 
-local function createMenu(ButtonName, MenuFrame)
-    local Button = Instance.new("TextButton")
-    Button.Size = UDim2.new(1, 0, 0.1, 0)
-    Button.Text = ButtonName
-    Button.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
-    Button.Parent = MenuFrame
+-- ตั้งค่า Button
+button.Size = UDim2.new(0, 100, 0, 100)
+button.Position = UDim2.new(0.5, -50, 0.5, -50)
+button.BackgroundColor3 = Color3.fromRGB(0, 255, 0) -- สีเขียว
+button.Text = "Toggle Kill Aura"
+button.Parent = screenGui
 
-    return Button
+-- ตั้งค่า Frame
+frame.Size = UDim2.new(0, 300, 0, 200)
+frame.Position = UDim2.new(0.5, -150, 0.5, -100)
+frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0) -- สีดำ
+frame.Visible = false
+frame.Parent = screenGui
+
+-- ตั้งค่า Close Button
+closeButton.Size = UDim2.new(0, 100, 0, 50)
+closeButton.Position = UDim2.new(0.5, -50, 0, 10)
+closeButton.Text = "Close UI"
+closeButton.Parent = frame
+
+-- ตัวแปรสำหรับ Kill Aura
+local killAuraEnabled = false
+
+-- ฟังก์ชัน Toggle Kill Aura
+local function toggleKillAura()
+    killAuraEnabled = not killAuraEnabled
+    frame.Visible = true  -- เปิด UI
+    if killAuraEnabled then
+        button.Text = "Kill Aura: ON"
+        game.StarterGui:SetCore("ChatMakeSystemMessage", {
+            Text = "Kill Aura Enabled"; 
+            Color = Color3.new(0, 1, 0) -- ตัวอักษรเขียว
+        })
+
+        while killAuraEnabled do
+            wait(2)  -- ตั้งเวลาสำหรับ Kill Aura
+            local character = player.Character
+            if character and character:FindFirstChild("HumanoidRootPart") then
+                for _, mob in pairs(workspace:GetChildren()) do
+                    if mob:IsA("Model") and mob:FindFirstChild("Humanoid") then
+                        local distance = (mob.PrimaryPart.Position - character.HumanoidRootPart.Position).Magnitude
+                        if distance < 15 then
+                            -- ทำการฆ่า mob
+                            mob.Humanoid.Health = 0  -- ทำการฆ่า mob
+                            wait(2)  -- ตั้งเวลาการ kill aura
+                        end
+                    end
+                end
+            end
+        end
+
+    else
+        button.Text = "Kill Aura: OFF"
+        game.StarterGui:SetCore("ChatMakeSystemMessage", {
+            Text = "Kill Aura Disabled"; 
+            Color = Color3.new(1, 0, 0) -- ตัวอักษรแดง
+        })
+    end
 end
 
-local function notify(message)
-    local NotifyFrame = Instance.new("Frame")
-    NotifyFrame.Size = UDim2.new(0.3, 0, 0.1, 0)
-    NotifyFrame.Position = UDim2.new(0.7, 0, 0.9, 0)
-    NotifyFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    NotifyFrame.BorderSizePixel = 0
-    NotifyFrame.Parent = ScreenGui
+-- เชื่อมต่อคลิกที่ปุ่มเปิด Kill Aura
+button.MouseButton1Click:Connect(toggleKillAura)
 
-    local NotifyText = Instance.new("TextLabel")
-    NotifyText.Size = UDim2.new(1, 0, 1, 0)
-    NotifyText.Text = message
-    NotifyText.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    NotifyText.TextColor3 = Color3.fromRGB(255, 255, 255)
-    NotifyText.Parent = NotifyFrame
-
-    wait(3)
-
-    NotifyFrame:Destroy()
-end
-
--- ทดสอบการทำงานของ Notify
-notify("สคริปต์ทำงานสำเร็จ")
-
-local HomeButton = createMenu("Home", MainFrame)
-HomeButton.MouseButton1Click:Connect(function()
-    notify("Home Button Clicked")
-end)
-
--- ทดสอบปุ่มอื่น ๆ
-local SettingsButton = createMenu("Settings", MainFrame)
-SettingsButton.MouseButton1Click:Connect(function()
-    notify("Settings Clicked")
+-- ปุ่ม Close UI
+closeButton.MouseButton1Click:Connect(function()
+    frame.Visible = false  -- ปิด UI
 end)
