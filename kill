@@ -1,17 +1,14 @@
--- สร้าง ScreenGui
 local Player = game.Players.LocalPlayer
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "AttackMenu"
 ScreenGui.Parent = Player:WaitForChild("PlayerGui")
 
--- สร้าง Frame หลัก
 local MainFrame = Instance.new("Frame")
 MainFrame.Size = UDim2.new(0.5, 0, 0.5, 0)
 MainFrame.Position = UDim2.new(0.25, 0, 0.25, 0)
 MainFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 MainFrame.Parent = ScreenGui
 
--- ฟังก์ชันสร้างเมนู
 local function createMenu(ButtonName, MenuFrame)
     local Button = Instance.new("TextButton")
     Button.Size = UDim2.new(1, 0, 0.1, 0)
@@ -22,7 +19,6 @@ local function createMenu(ButtonName, MenuFrame)
     return Button
 end
 
--- ฟังก์ชันแจ้งเตือน
 local function notify(message)
     local NotifyFrame = Instance.new("Frame")
     NotifyFrame.Size = UDim2.new(0.3, 0, 0.1, 0)
@@ -38,86 +34,21 @@ local function notify(message)
     NotifyText.TextColor3 = Color3.fromRGB(255, 255, 255)
     NotifyText.Parent = NotifyFrame
 
-    -- สร้างการหายไปหลังจาก 3 วินาที
     wait(3)
 
-    -- ทำให้ NotifyFrame หายไป
     NotifyFrame:Destroy()
 end
 
--- สร้างปุ่ม Home
-local HomeButton = createMenu("Home", MainFrame)
+-- ทดสอบการทำงานของ Notify
+notify("สคริปต์ทำงานสำเร็จ")
 
--- เพิ่มการเปิดปิดฟังก์ชันที่ใช้งาน
-local AttackEnabled = false
+local HomeButton = createMenu("Home", MainFrame)
 HomeButton.MouseButton1Click:Connect(function()
-    AttackEnabled = not AttackEnabled
-    notify("Attack Enabled: " .. tostring(AttackEnabled))
+    notify("Home Button Clicked")
 end)
 
--- สร้าง Settings
+-- ทดสอบปุ่มอื่น ๆ
 local SettingsButton = createMenu("Settings", MainFrame)
-
--- สร้างฟังก์ชันตั้งค่า
 SettingsButton.MouseButton1Click:Connect(function()
     notify("Settings Clicked")
 end)
-
--- สร้าง Misc
-local MiscButton = createMenu("Misc", MainFrame)
-
--- สร้างฟังก์ชันสำหรับเลื่อน Misc
-MiscButton.MouseButton1Click:Connect(function()
-    notify("Misc Clicked")
-end)
-
--- สร้าง Profile
-local ProfileButton = createMenu("Profile", MainFrame)
-
--- สร้างฟังก์ชันแสดงข้อมูลโปรไฟล์
-ProfileButton.MouseButton1Click:Connect(function()
-    notify("Profile Clicked")
-end)
-
--- สร้างปุ่มย่อหน้า UI
-local CollapseButton = Instance.new("TextButton")
-CollapseButton.Size = UDim2.new(1, 0, 0.1, 0)
-CollapseButton.Text = "Collapse UI"
-CollapseButton.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
-CollapseButton.Parent = MainFrame
-
-CollapseButton.MouseButton1Click:Connect(function()
-    MainFrame.Visible = not MainFrame.Visible
-    local status = MainFrame.Visible and "expanded" or "collapsed"
-    notify("Menu " .. status)
-end)
-
--- เพิ่ม Animation (สามารถปรับเปลี่ยนได้)
-local function animateButton(button)
-    local UIScale = Instance.new("UIScale", button)
-    UIScale.Scale = 1
-
-    button.MouseEnter:Connect(function()
-        UIScale.Scale = 1.1
-    end)
-
-    button.MouseLeave:Connect(function()
-        UIScale.Scale = 1
-    end)
-end
-
--- เพิ่ม Animation ให้ปุ่มทั้งหมด
-animateButton(HomeButton)
-animateButton(SettingsButton)
-animateButton(MiscButton)
-animateButton(ProfileButton)
-animateButton(CollapseButton)
-
--- สร้างรัศมีวงกลม (ตัวอย่าง)
-local Circle = Instance.new("Part")
-Circle.Shape = Enum.PartType.Cylinder
-Circle.Size = Vector3.new(20, 1, 20)
-Circle.Position = Vector3.new(0, 0, 0)
-Circle.Transparency = 0.5
-Circle.BrickColor = BrickColor.new("Bright blue")
-Circle.Parent = workspace
