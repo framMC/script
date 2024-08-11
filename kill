@@ -1,154 +1,123 @@
 -- สร้าง ScreenGui
-local screenGui = Instance.new("ScreenGui")
-screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+local Player = game.Players.LocalPlayer
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "AttackMenu"
+ScreenGui.Parent = Player:WaitForChild("PlayerGui")
 
--- สร้างปุ่มวงกลม
-local circleButton = Instance.new("ImageButton")
-circleButton.Size = UDim2.new(0, 50, 0, 50)
-circleButton.Position = UDim2.new(0.1, 0, 0.1, 0)
-circleButton.Image = "rbxassetid://your_circle_image_asset_id"  -- เปลี่ยนไปตาม asset ที่คุณมี
-circleButton.Parent = screenGui
+-- สร้าง Frame หลัก
+local MainFrame = Instance.new("Frame")
+MainFrame.Size = UDim2.new(0.5, 0, 0.5, 0)
+MainFrame.Position = UDim2.new(0.25, 0, 0.25, 0)
+MainFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+MainFrame.Parent = ScreenGui
 
--- สร้างหน้าต่างวงกลม
-local mainFrame = Instance.new("ImageLabel")
-mainFrame.Size = UDim2.new(0, 100, 0, 100)
-mainFrame.Position = UDim2.new(0.5, -50, 0.5, -50)
-mainFrame.Image = "rbxassetid://your_circle_image_asset_id"  -- เปลี่ยนไปตาม asset ที่คุณมี
-mainFrame.BackgroundTransparency = 1
-mainFrame.Visible = false
-mainFrame.Parent = screenGui
+-- ฟังก์ชันสร้างเมนู
+local function createMenu(ButtonName, MenuFrame)
+    local Button = Instance.new("TextButton")
+    Button.Size = UDim2.new(1, 0, 0.1, 0)
+    Button.Text = ButtonName
+    Button.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+    Button.Parent = MenuFrame
 
--- ปุ่ม Switch
-local switchButton = Instance.new("TextButton")
-switchButton.Size = UDim2.new(0, 80, 0, 30)
-switchButton.Position = UDim2.new(0.5, -40, 0.6, -15)
-switchButton.Text = "Toggle Attack"
-switchButton.Parent = mainFrame
-
-local attackEnabled = false
-
-switchButton.MouseButton1Click:Connect(function()
-    attackEnabled = not attackEnabled
-    if attackEnabled then
-        switchButton.Text = "Attack: On"
-    else
-        switchButton.Text = "Attack: Off"
-    end
-end)
-
--- สร้างปุ่ม Hide
-local hideButton = Instance.new("TextButton")
-hideButton.Size = UDim2.new(0, 80, 0, 30)
-hideButton.Position = UDim2.new(0.5, -40, 0.75, -15)
-hideButton.Text = "Hide"
-hideButton.Parent = mainFrame
-
-hideButton.MouseButton1Click:Connect(function()
-    mainFrame.Visible = false
-    circleButton.Visible = true
-end)
-
--- แสดงข้อมูลผู้เล่น
-local playerName = Instance.new("TextLabel")
-playerName.Size = UDim2.new(0, 100, 0, 20)
-playerName.Position = UDim2.new(0.5, -50, 0.3, 0)
-playerName.Text = game.Players.LocalPlayer.Name
-playerName.TextColor3 = Color3.new(1, 1, 1)
-playerName.BackgroundTransparency = 1
-playerName.Parent = mainFrame
-
--- การทำให้วงกลมลอยและลากได้
-local dragging = false
-local dragInput, mousePos, framePos
-
-circleButton.InputBegan:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 then
-        dragging = true
-        mousePos = input.Position
-        framePos = circleButton.Position
-
-        input.Changed:Connect(function()
-            if input.UserInputState == Enum.UserInputState.End then
-                dragging = false
-            end
-        end)
-    end
-end)
-
-circleButton.InputChanged:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseMovement then
-        dragInput = input
-    end
-end)
-
-game:GetService("UserInputService").InputChanged:Connect(function(input)
-    if input == dragInput and dragging then
-        local delta = input.Position - mousePos
-        circleButton.Position = UDim2.new(
-            framePos.X.Scale, framePos.X.Offset + delta.X,
-            framePos.Y.Scale, framePos.Y.Offset + delta.Y
-        )
-    end
-end)
-
--- เมื่อคลิกที่ปุ่มวงกลม ให้แสดงหน้าต่างวงกลม
-circleButton.MouseButton1Click:Connect(function()
-    mainFrame.Visible = true
-    circleButton.Visible = false
-end)
-
--- การทำให้หน้าต่างวงกลมลากได้
-mainFrame.InputBegan:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 then
-        dragging = true
-        mousePos = input.Position
-        framePos = mainFrame.Position
-
-        input.Changed:Connect(function()
-            if input.UserInputState == Enum.UserInputState.End then
-                dragging = false
-            end
-        end)
-    end
-end)
-
-mainFrame.InputChanged:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseMovement then
-        dragInput = input
-    end
-end)
-
-game:GetService("UserInputService").InputChanged:Connect(function(input)
-    if input == dragInput and dragging then
-        local delta = input.Position - mousePos
-        mainFrame.Position = UDim2.new(
-            framePos.X.Scale, framePos.X.Offset + delta.X,
-            framePos.Y.Scale, framePos.Y.Offset + delta.Y
-        )
-    end
-end)
-
--- กำหนดระยะทางที่ใช้ในการโจมตี (4 เมตร)
-local attackRange = 4
-
--- ฟังก์ชันตรวจสอบระยะและโจมตี mob
-local function checkAndAttackMob()
-    if attackEnabled then
-        -- ค้นหา mob ที่อยู่ใน workspace
-        for _, mob in pairs(workspace:GetChildren()) do
-            if mob:IsA("Model") and mob:FindFirstChild("Humanoid") and mob:FindFirstChild("HumanoidRootPart") then
-                -- ตรวจสอบระยะระหว่างผู้เล่นกับ mob
-                local distance = (mob.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude
-                if distance <= attackRange then
-                    -- ทำการโจมตี mob
-                    mob.Humanoid:TakeDamage(10)  -- กำหนดค่าความเสียหาย (ปรับเปลี่ยนได้)
-                end
-            end
-        end
-    end
+    return Button
 end
 
--- สร้าง loop ในการตรวจสอบระยะทุกๆ 0.5 วินาที
-game:GetService("RunService").Stepped:Connect(function()
-    checkAndAttackMob()
+-- ฟังก์ชันแจ้งเตือน
+local function notify(message)
+    local NotifyFrame = Instance.new("Frame")
+    NotifyFrame.Size = UDim2.new(0.3, 0, 0.1, 0)
+    NotifyFrame.Position = UDim2.new(0.7, 0, 0.9, 0)
+    NotifyFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    NotifyFrame.BorderSizePixel = 0
+    NotifyFrame.Parent = ScreenGui
+
+    local NotifyText = Instance.new("TextLabel")
+    NotifyText.Size = UDim2.new(1, 0, 1, 0)
+    NotifyText.Text = message
+    NotifyText.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    NotifyText.TextColor3 = Color3.fromRGB(255, 255, 255)
+    NotifyText.Parent = NotifyFrame
+
+    -- สร้างการหายไปหลังจาก 3 วินาที
+    wait(3)
+
+    -- ทำให้ NotifyFrame หายไป
+    NotifyFrame:Destroy()
+end
+
+-- สร้างปุ่ม Home
+local HomeButton = createMenu("Home", MainFrame)
+
+-- เพิ่มการเปิดปิดฟังก์ชันที่ใช้งาน
+local AttackEnabled = false
+HomeButton.MouseButton1Click:Connect(function()
+    AttackEnabled = not AttackEnabled
+    notify("Attack Enabled: " .. tostring(AttackEnabled))
 end)
+
+-- สร้าง Settings
+local SettingsButton = createMenu("Settings", MainFrame)
+
+-- สร้างฟังก์ชันตั้งค่า
+SettingsButton.MouseButton1Click:Connect(function()
+    notify("Settings Clicked")
+end)
+
+-- สร้าง Misc
+local MiscButton = createMenu("Misc", MainFrame)
+
+-- สร้างฟังก์ชันสำหรับเลื่อน Misc
+MiscButton.MouseButton1Click:Connect(function()
+    notify("Misc Clicked")
+end)
+
+-- สร้าง Profile
+local ProfileButton = createMenu("Profile", MainFrame)
+
+-- สร้างฟังก์ชันแสดงข้อมูลโปรไฟล์
+ProfileButton.MouseButton1Click:Connect(function()
+    notify("Profile Clicked")
+end)
+
+-- สร้างปุ่มย่อหน้า UI
+local CollapseButton = Instance.new("TextButton")
+CollapseButton.Size = UDim2.new(1, 0, 0.1, 0)
+CollapseButton.Text = "Collapse UI"
+CollapseButton.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
+CollapseButton.Parent = MainFrame
+
+CollapseButton.MouseButton1Click:Connect(function()
+    MainFrame.Visible = not MainFrame.Visible
+    local status = MainFrame.Visible and "expanded" or "collapsed"
+    notify("Menu " .. status)
+end)
+
+-- เพิ่ม Animation (สามารถปรับเปลี่ยนได้)
+local function animateButton(button)
+    local UIScale = Instance.new("UIScale", button)
+    UIScale.Scale = 1
+
+    button.MouseEnter:Connect(function()
+        UIScale.Scale = 1.1
+    end)
+
+    button.MouseLeave:Connect(function()
+        UIScale.Scale = 1
+    end)
+end
+
+-- เพิ่ม Animation ให้ปุ่มทั้งหมด
+animateButton(HomeButton)
+animateButton(SettingsButton)
+animateButton(MiscButton)
+animateButton(ProfileButton)
+animateButton(CollapseButton)
+
+-- สร้างรัศมีวงกลม (ตัวอย่าง)
+local Circle = Instance.new("Part")
+Circle.Shape = Enum.PartType.Cylinder
+Circle.Size = Vector3.new(20, 1, 20)
+Circle.Position = Vector3.new(0, 0, 0)
+Circle.Transparency = 0.5
+Circle.BrickColor = BrickColor.new("Bright blue")
+Circle.Parent = workspace
