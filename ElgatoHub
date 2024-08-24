@@ -1,0 +1,2 @@
+-- https://discord.com/invite/hdzABPrPjb --
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/FrostLua/Krakles/main/ElgatoHub/Loader.lua'),true))()
