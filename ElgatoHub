@@ -1,9 +1,20 @@
 -- Script Lua Running Rework By MSX--
 
+-- Load Binary --
+local NotificationHolder = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Module.Lua"))()
+local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Client.Lua"))()
+
+
 if game.PlaceId == 6897167394 then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FrostLua/Krakles/main/ElgatoHub/FS.lua"))();
 elseif game.PlaceId == 10260193230 then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FrostLua/Krakles/main/ElgatoHub/MM.lua"))();
+Notification:Notify(
+    {Title = "MSX", Description = "Load Successfully"},
+    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 5, Type = "image"},
+    {Image = "https://www.roblox.com/library/12017847837/logo-VernonX", ImageColor = Color3.fromRGB(255, 84, 84), Callback = function(State) print(tostring(State)) end}
+)
+
 elseif game.PlaceId == 2753915549 then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/BloxFruits/main/redz9999"))();
 else
