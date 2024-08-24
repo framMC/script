@@ -23,10 +23,10 @@ Notification:Notify(
 elseif game.PlaceId == 2753915549 then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/BloxFruits/main/redz9999"))();
 else
-    game.Players.LocalPlayer:Kick("Game not supported! Please Try Game Support");
+    Notification:Notify(
+    {Title = "MSX", Description = "Game Not Support Please try game Support!!"},
+    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 8, Type = "image"},
+    {Image = "https://www.roblox.com/library/12017847837/logo-VernonX", ImageColor = Color3.fromRGB(255, 84, 84), Callback = function(State) print(tostring(State)) end}
+)
 end;
 
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/framMC/script/main/GamePlay/Welcomeui1.lua", true))()
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/framMC/script/main/GamePlay/WelcomeUI.lua", true))()
