@@ -1,5 +1,14 @@
--- https://discord.com/invite/hdzABPrPjb --
-loadstring(game:HttpGet(('https://raw.githubusercontent.com/FrostLua/Krakles/main/ElgatoHub/Loader.lua'),true))()
+-- Script Lua Running Rework By MSX--
+
+if game.PlaceId == 6897167394 then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FrostLua/Krakles/main/ElgatoHub/FS.lua"))();
+elseif game.PlaceId == 10260193230 then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FrostLua/Krakles/main/ElgatoHub/MM.lua"))();
+elseif game.PlaceId == 2753915549 then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/BloxFruits/main/redz9999"))();
+else
+    game.Players.LocalPlayer:Kick("Game not supported! Please Try Game Support");
+end;
 
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/framMC/script/main/GamePlay/Welcomeui1.lua", true))()
