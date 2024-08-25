@@ -59,3 +59,21 @@ end
 while wait(1) do
     checkTrees()
 end
+
+  -- Check Join Player --
+local Players = game:GetService("Players")
+local ChatService = game:GetService("Chat")
+
+-- ฟังก์ชันที่จะแสดงข้อความในช่องแชทเมื่อมีผู้เล่นเข้าร่วม
+local function announcePlayerJoin(player)
+    ChatService:Chat(player.Character or player.CharacterAdded:Wait(), player.Name .. " has joined the game!", Enum.ChatColor.Green)
+end
+
+-- ตรวจจับผู้เล่นที่เข้ามาตอนเริ่มเกม
+for _, player in pairs(Players:GetPlayers()) do
+    announcePlayerJoin(player)
+end
+
+-- ตรวจจับผู้เล่นใหม่ที่เข้ามาหลังจากเริ่มเกม
+Players.PlayerAdded:Connect(announcePlayerJoin)
+
