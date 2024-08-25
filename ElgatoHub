@@ -18,6 +18,10 @@ Notification:Notify(
     {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 10, Type = "image"},
     {Image = "http://www.roblox.com/asset/?id=12017847837", ImageColor = Color3.fromRGB(255, 84, 84)}
 )
+game.StarterGui:SetCore("ChatMakeSystemMessage", {
+    Text = "[MSX Console]: Run Successfully. The working name experience is The Sea Memes.";
+    Color = Color3.fromRGB(0, 255, 0); -- สีเขียว
+})
 elseif game.PlaceId == 2753915549 then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/BloxFruits/main/redz9999"))();
 else
@@ -26,5 +30,9 @@ else
     {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 10, Type = "image"},
     {Image = "https://www.roblox.com/library/12017847837/logo-VernonX", ImageColor = Color3.fromRGB(255, 84, 84), Callback = function(State) print(tostring(State)) end}
 )
+game.StarterGui:SetCore("ChatMakeSystemMessage", {
+    Text = "[MSX Console]: Game Not Support. Please try game support!!";
+    Color = Color3.fromRGB(255, 0, 0); -- Red Color
+})
 end;
 
