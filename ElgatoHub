@@ -54,6 +54,10 @@ local function checkTrees()
         end
     end
 end
+game.StarterGui:SetCore("ChatMakeSystemMessage", {
+    Text = "[MSX Script]: Loading Successfully. Antilag V1";
+    Color = Color3.fromRGB(0, 255, 0); -- Green Color
+})
 
 -- ทำการเช็คระยะห่างทุก ๆ 1 วินาที
 while wait(1) do
