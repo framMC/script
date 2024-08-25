@@ -37,3 +37,25 @@ game.StarterGui:SetCore("ChatMakeSystemMessage", {
 })
 end;
 
+-- Loaded Anti Lagg V1 --
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local renderDistance = 200 -- กำหนดระยะการแสดงผล
+-- ฟังก์ชันตรวจสอบระยะห่างและจัดการกับต้นไม้
+local function checkTrees()
+    for _, obj in pairs(workspace:GetChildren()) do
+        if obj:IsA("Model") and obj:FindFirstChild("TreeTag") then -- ตรวจสอบว่าคือ Model และเป็นต้นไม้
+            local distance = (obj.PrimaryPart.Position - character.HumanoidRootPart.Position).Magnitude
+            if distance > renderDistance then
+                obj.Parent = nil -- ลบต้นไม้ออกจาก workspace
+            else
+                obj.Parent = workspace -- โหลดต้นไม้กลับเข้ามาใน workspace
+            end
+        end
+    end
+end
+
+-- ทำการเช็คระยะห่างทุก ๆ 1 วินาที
+while wait(1) do
+    checkTrees()
+end
