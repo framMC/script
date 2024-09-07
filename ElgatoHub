@@ -23,24 +23,6 @@ game.StarterGui:SetCore("ChatMakeSystemMessage", {
     Text = "[MSX Console]: Run Successfully. The working name experience is The Sea Memes.";
     Color = Color3.fromRGB(0, 255, 0); -- Green Color
 })
-  -- Script Pet Simulator 99 --
-elseif game.PlaceId == 8737899170 then
-   loadstring(game:HttpGet('https://hugegames.space/1196a211ea0e379bccc3f763.lua'))()
-Notification:Notify(
-    {Title = "MSX Group UI", Description = "Loading Successfully"},
-    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 10, Type = "image"},
-    {Image = "https://www.roblox.com/library/12017847837/logo-VernonX", ImageColor = Color3.fromRGB(255, 84, 84), Callback = function(State) print(tostring(State)) end}
-)
-wait(1)
-Notification:Notify(
-    {Title = "MSX Group UI", Description = "Server Name: Pet Simulator 99"},
-    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 10, Type = "image"},
-    {Image = "http://www.roblox.com/asset/?id=12017847837", ImageColor = Color3.fromRGB(255, 84, 84)}
-)
-game.StarterGui:SetCore("ChatMakeSystemMessage", {
-    Text = "[MSX Console]: Run Successfully. The working name experience is The Sea Memes.";
-    Color = Color3.fromRGB(0, 255, 0); -- Green Color
-})
  -- Error Not Found --
 else
     Notification:Notify(
