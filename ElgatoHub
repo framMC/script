@@ -26,7 +26,6 @@ game.StarterGui:SetCore("ChatMakeSystemMessage", {
   -- Script Pet Simulator 99 --
 elseif game.PlaceId == 16498369169 then
    loadstring(game:HttpGet("https://raw.githubusercontent.com/BludnyHolandan/PS99/main/v3/autofarm/lua"))()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Omgshit/Scripts/main/MainLoader.lua"))()
 Notification:Notify(
     {Title = "MSX Group UI", Description = "Loading Successfully"},
     {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 10, Type = "image"},
@@ -42,7 +41,7 @@ game.StarterGui:SetCore("ChatMakeSystemMessage", {
     Text = "[MSX Console]: Run Successfully. The working name experience is The Sea Memes.";
     Color = Color3.fromRGB(0, 255, 0); -- Green Color
 })
-
+ -- Error Not Found --
 else
     Notification:Notify(
     {Title = "MSX Group UI", Description = "Game Not Support Please try game Support!!"},
