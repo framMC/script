@@ -24,8 +24,8 @@ game.StarterGui:SetCore("ChatMakeSystemMessage", {
     Color = Color3.fromRGB(0, 255, 0); -- Green Color
 })
   -- Script Pet Simulator 99 --
-elseif game.PlaceId == 16498369169 then
-   loadstring(game:HttpGet("https://raw.githubusercontent.com/BludnyHolandan/PS99/main/v3/autofarm/lua"))()
+elseif game.PlaceId == 8737899170 then
+   loadstring(game:HttpGet('https://hugegames.space/1196a211ea0e379bccc3f763.lua'))()
 Notification:Notify(
     {Title = "MSX Group UI", Description = "Loading Successfully"},
     {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 10, Type = "image"},
@@ -80,21 +80,3 @@ game.StarterGui:SetCore("ChatMakeSystemMessage", {
 while wait(1) do
     checkTrees()
 end
-
-  -- Check Join Player --
-local Players = game:GetService("Players")
-local ChatService = game:GetService("Chat")
-
--- ฟังก์ชันที่จะแสดงข้อความในช่องแชทเมื่อมีผู้เล่นเข้าร่วม
-local function announcePlayerJoin(player)
-    ChatService:Chat(player.Character or player.CharacterAdded:Wait(), player.Name .. " has joined the game!", Enum.ChatColor.Green)
-end
-
--- ตรวจจับผู้เล่นที่เข้ามาตอนเริ่มเกม
-for _, player in pairs(Players:GetPlayers()) do
-    announcePlayerJoin(player)
-end
-
--- ตรวจจับผู้เล่นใหม่ที่เข้ามาหลังจากเริ่มเกม
-Players.PlayerAdded:Connect(announcePlayerJoin)
-
