@@ -1,0 +1,78 @@
+-- Secure Script Running Rework By MSX --
+
+-- Load Binary with HTTPS and pcall protection --
+local success, NotificationHolder = pcall(function()
+    return loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Module.Lua"))()
+end)
+local success, Notification = pcall(function()
+    return loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Client.Lua"))()
+end)
+
+if success then
+    if game.PlaceId == 6897167394 then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/FrostLua/Krakles/main/ElgatoHub/FS.lua"))();
+    elseif game.PlaceId == 10260193230 then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Omgshit/Scripts/main/MainLoader.lua"))()
+        Notification:Notify(
+            {Title = "MSX Group UI", Description = "Loading Successfully"},
+            {OutlineColor = Color3.fromRGB(80, 80, 80), Time = 10, Type = "image"},
+            {Image = "https://www.roblox.com/library/12017847837/logo-VernonX", ImageColor = Color3.fromRGB(255, 84, 84), Callback = function(State) print(tostring(State)) end}
+        )
+        wait(1)
+        Notification:Notify(
+            {Title = "MSX Group UI", Description = "Server Name: Meme Sea"},
+            {OutlineColor = Color3.fromRGB(80, 80, 80), Time = 10, Type = "image"},
+            {Image = "http://www.roblox.com/asset/?id=12017847837", ImageColor = Color3.fromRGB(255, 84, 84)}
+        )
+        game.StarterGui:SetCore("ChatMakeSystemMessage", {
+            Text = "[MSX Console]: Run Successfully. The working name experience is The Sea Memes.";
+            Color = Color3.fromRGB(0, 255, 0); -- Green Color
+        })
+    else
+        Notification:Notify(
+            {Title = "MSX Group UI", Description = "Game Not Supported. Please try a supported game!"},
+            {OutlineColor = Color3.fromRGB(80, 80, 80), Time = 10, Type = "image"},
+            {Image = "https://www.roblox.com/library/12017847837/logo-VernonX", ImageColor = Color3.fromRGB(255, 84, 84), Callback = function(State) print(tostring(State)) end}
+        )
+        game.StarterGui:SetCore("ChatMakeSystemMessage", {
+            Text = "[MSX Console]: Game Not Supported. Please try a supported game!";
+            Color = Color3.fromRGB(255, 0, 0); -- Red Color
+        })
+    end
+else
+    game.StarterGui:SetCore("ChatMakeSystemMessage", {
+        Text = "[MSX Console]: Failed to load notification system!";
+        Color = Color3.fromRGB(255, 0, 0); -- Red Color
+    })
+end
+
+-- Anti-Lag System Improvement --
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local renderDistance = 200 -- Set render distance
+
+-- Use CollectionService for efficient object management
+local CollectionService = game:GetService("CollectionService")
+
+local function checkTrees()
+    for _, obj in pairs(CollectionService:GetTagged("TreeTag")) do -- Use tagged objects for better performance
+        if obj:IsA("Model") and obj.PrimaryPart then
+            local distance = (obj.PrimaryPart.Position - character.HumanoidRootPart.Position).Magnitude
+            if distance > renderDistance then
+                obj.Parent = nil -- Remove object from workspace
+            else
+                obj.Parent = workspace -- Load object back into workspace
+            end
+        end
+    end
+end
+
+game.StarterGui:SetCore("ChatMakeSystemMessage", {
+    Text = "[MSX Script]: Loaded Successfully. Anti-lag V1";
+    Color = Color3.fromRGB(0, 255, 0); -- Green Color
+})
+
+-- Check distance every 1 second
+while wait(1) do
+    checkTrees()
+end
