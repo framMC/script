@@ -1,4 +1,3 @@
 loadstring(game:HttpGet("https://rawscripts.net/raw/Fisch-KEYLESS-INFINITEWARE-21695"))()
 
 game.Players.LocalPlayer:kick("An Error Occurred. Please Rejoin!")
-end
