@@ -25,7 +25,7 @@ Notification:Notify(
 )
 wait(1)
 Notification:Notify(
-    {Title = "Notify", Description = "สร้างโดย MoonlightdevX"},
+    {Title = "Notify", Description = "Thank For Use"},
     {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 11, Type = "image"},
     {Image = "http://www.roblox.com/asset/?id=12017847837", ImageColor = Color3.fromRGB(255, 84, 84)}
 )
